@@ -69,6 +69,13 @@ for x in X_test:
     y = predire(x, beta_0, beta_1)
     y_predictions.append(y)
 
+# Calcul de l'erreur
+erreurs = []
+for i in range(0, len(X_test)):
+    attendu = y_test[i]
+    predit = y_predictions[i]
+    erreurs.append(attendu-predit)
+print(erreurs)
 
 """
 Creation de la courbe matplotlib
