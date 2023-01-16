@@ -75,7 +75,14 @@ for i in range(0, len(X_test)):
     attendu = y_test[i]
     predit = y_predictions[i]
     erreurs.append(attendu-predit)
-print(erreurs)
+# print(erreurs)
+
+# Choix de n observations
+n = 8
+print("X : ", X_test[:n])
+print("Attendu : ", y_test[:n])
+print("Predit : ", y_predictions[:n])
+print("Erreur : ", erreurs[:n])
 
 """
 Creation de la courbe matplotlib
