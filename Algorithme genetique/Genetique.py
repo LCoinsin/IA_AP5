@@ -70,11 +70,14 @@ def reproduction(population):
 def main():
     global population
     create_population(population)
+    total = 0
     while("".join(population[0]["individu"]) != code_secret):
+        print(total, " - ", "".join(population[0]["individu"]))
         calculate_score(population)
         population = sort_by_score(population)
         population = selection_elite(population)
         population = reproduction(population)
+        total += 1
     
     print("".join(population[0]["individu"]))
 
