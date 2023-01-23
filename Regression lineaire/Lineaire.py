@@ -108,13 +108,26 @@ print("RMSE sklearn : ", mean_squared_error(y_test, y_predictions, squared=False
 
 #R^2
 print("R2 sklearn : ", r2_score(y_test, y_predictions))
+"""
+figure(figsize=(8, 6), dpi=80)
+plt.plot(erreurs, ".", color="black")
+plt.axhline(y=0, color="r", linestyle='-')
+plt.grid(axis="x", color="0.95")
+plt.title("Recherche de pattern dans les erreurs")
+plt.show()
+"""
 
+"""
+DURBIN WATSON
+"""
 from statsmodels.stats.stattools import durbin_watson
-
-#Durbin watson
 print("Durbin watson : ", durbin_watson(erreurs))
 
-# Résidus ont une moyenne de 0 et normalement distribué
+
+
+"""
+Résidus ont une moyenne de 0 et normalement distribué
+"""
 print("Meaen of residuals : ", np.mean(erreurs))
 # H0 : Les résidus sont normalement distribué
 # H2 : Les résidus ne sont pas normalement distribué
@@ -130,13 +143,12 @@ else :
     print("Les résidus en sont pas normalement distribués")
 
 """
-figure(figsize=(8, 6), dpi=80)
-plt.plot(erreurs, ".", color="black")
-plt.axhline(y=0, color="r", linestyle='-')
-plt.grid(axis="x", color="0.95")
-plt.title("Recherche de pattern dans les erreurs")
-plt.show()
+Calcul de la variance
 """
+print(np.var(erreurs[0:10]))
+print(np.var(erreurs[10:20]))
+print(np.var(erreurs[20:30]))
+
 
 """
 Creation de la courbe matplotlib
