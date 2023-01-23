@@ -114,12 +114,29 @@ from statsmodels.stats.stattools import durbin_watson
 #Durbin watson
 print("Durbin watson : ", durbin_watson(erreurs))
 
+# Résidus ont une moyenne de 0 et normalement distribué
+print("Meaen of residuals : ", np.mean(erreurs))
+# H0 : Les résidus sont normalement distribué
+# H2 : Les résidus ne sont pas normalement distribué
+
+# P-value = Prob de faire une erreur en rejettant H0
+from scipy import stats
+shapiro_test = stats.shapiro(erreurs)
+print("Shapiro p-value ", shapiro_test.pvalue)
+
+if (shapiro_test.pvalue>0.05):
+    print("Les residus sont normalement distribués")
+else : 
+    print("Les résidus en sont pas normalement distribués")
+
+"""
 figure(figsize=(8, 6), dpi=80)
 plt.plot(erreurs, ".", color="black")
 plt.axhline(y=0, color="r", linestyle='-')
 plt.grid(axis="x", color="0.95")
 plt.title("Recherche de pattern dans les erreurs")
 plt.show()
+"""
 
 """
 Creation de la courbe matplotlib
