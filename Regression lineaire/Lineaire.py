@@ -84,8 +84,41 @@ print("Attendu : ", y_test[:n])
 print("Predit : ", y_predictions[:n])
 print("Erreur : ", erreurs[:n])
 
+from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import mean_absolute_percentage_error
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
+
+#ME
+me = (1 / len(erreurs)) * sum(erreurs)
+print("ME : ", me)
+
+#MAE
+mae = (1/len(erreurs)) * sum(erreurs)
+print("MAE sklearn : ", mean_absolute_error(y_test, y_predictions))
+
+#MAPE
+print("MAPE sklearn : ", mean_absolute_percentage_error(y_test, y_predictions))
+
+#MSE
+print("MSE sklearn : ", mean_squared_error(y_test, y_predictions))
+
+#RMSE
+print("RMSE sklearn : ", mean_squared_error(y_test, y_predictions, squared=False))
+
+#R^2
+print("R2 sklearn : ", r2_score(y_test, y_predictions))
+
+figure(figsize=(8, 6), dpi=80)
+plt.plot(erreurs, ".", color="black")
+plt.axhline(y=0, color="r", linestyle='-')
+plt.grid(axis="x", color="0.95")
+plt.title("Recherche de pattern dans les erreurs")
+plt.show()
+
 """
 Creation de la courbe matplotlib
+"""
 """
 figure(figsize=(8, 6), dpi=80)
 plt.scatter(X_test, y_test, color='black')
@@ -94,3 +127,4 @@ plt.grid(axis='x', color='0.95')
 plt.xlabel("Nombre produits vendus (Jeu de test)")
 plt.ylabel("Chiffres d'affaires (Jeu de test)")
 plt.show()
+"""
