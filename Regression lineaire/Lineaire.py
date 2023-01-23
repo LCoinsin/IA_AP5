@@ -109,6 +109,11 @@ print("RMSE sklearn : ", mean_squared_error(y_test, y_predictions, squared=False
 #R^2
 print("R2 sklearn : ", r2_score(y_test, y_predictions))
 
+from statsmodels.stats.stattools import durbin_watson
+
+#Durbin watson
+print("Durbin watson : ", durbin_watson(erreurs))
+
 figure(figsize=(8, 6), dpi=80)
 plt.plot(erreurs, ".", color="black")
 plt.axhline(y=0, color="r", linestyle='-')
